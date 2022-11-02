@@ -8,7 +8,7 @@ export default function Overlay(props) {
         <span
             id="form-overlay"
             className={`overlay ${(active) ? "active" : ""}`}
-            style={{ "z-index": zIndex }}
+            style={{ zIndex: zIndex }}
         ></span>
     )
 }

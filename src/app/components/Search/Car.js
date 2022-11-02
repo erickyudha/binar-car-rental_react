@@ -16,13 +16,13 @@ export default function Car(props) {
 
     return (
         <div>
-            <div class="result-card flex-column flex-gap-16">
+            <div className="result-card flex-column flex-gap-16">
                 <img src={data.image} alt={data.manufacture} />
-                <div class="result-car-text flex-column flex-gap-8">
+                <div className="result-car-text flex-column flex-gap-8">
                     <span>{data.manufacture} - {data.model}</span>
-                    <span class="title">Rp {data.rentPerDay} / hari</span>
+                    <span className="title">Rp {data.rentPerDay} / hari</span>
                     <p>{data.description}</p>
-                    <div class="car-data flex-column flex-gap-16">
+                    <div className="car-data flex-column flex-gap-16">
                         <div>
                             <img src="img/icon_people.svg" alt="" />
                             <span>{data.capacity} orang</span>
@@ -37,7 +37,7 @@ export default function Car(props) {
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success">Pilih Mobil</button>
+                <button className="btn btn-success">Pilih Mobil</button>
             </div>
         </div>
     )

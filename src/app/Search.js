@@ -34,10 +34,10 @@ export default function Search() {
         })
 
         if (filteredCars.length < 1) {
-            setAppendElement(<span class="no-result-text">No Car Found...</span>)
+            setAppendElement(<span className="no-result-text">No Car Found...</span>)
         } else {
-            const carsResult = filteredCars.map(car =>
-                <Car data={car} />
+            const carsResult = filteredCars.map((car, index) =>
+                <Car data={car} key={index} />
             )
             setAppendElement(carsResult)
         }

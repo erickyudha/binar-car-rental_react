@@ -35,7 +35,7 @@ export default function DropdownInput(props) {
     if (type === "time") {
         Object.keys(option).forEach(function (key, _) {
             appendElement.push(
-                <li onClick={optionCLickHandler}>
+                <li onClick={optionCLickHandler} key={key}>
                     <input type="radio" name={varName} id={key} value={key} />
                     <label htmlFor={key}>{option[key]}</label>
                     <span>WIB</span>
@@ -45,7 +45,7 @@ export default function DropdownInput(props) {
     } else {
         Object.keys(option).forEach(function (key, _) {
             appendElement.push(
-                <li onClick={optionCLickHandler}>
+                <li onClick={optionCLickHandler} key={key}>
                     <input type="radio" name={varName} id={key} value={key} />
                     <label htmlFor={key}>{option[key]}</label>
                 </li>

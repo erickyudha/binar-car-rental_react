@@ -26,13 +26,13 @@ export default function TextInput(props) {
 
     return (
         <div className="text-input">
-            <label for="">{label}</label>
+            <label htmlFor="">{label}</label>
             <div className="input-container">
                 <input
                     name={varName}
                     type={type}
                     placeholder={placeholder}
-                    autocomplete="off"
+                    autoComplete="off"
                     onChange={onChangeHandler}
                     onFocus={e => {
                         overlayHandler(true)

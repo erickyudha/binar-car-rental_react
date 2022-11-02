@@ -82,12 +82,13 @@ export default function DateInput(props) {
 
     return (
         <div className="date-input">
-            <label for="pickupDate">{label}</label>
+            <label htmlFor="pickupDate">{label}</label>
             <div className="input-container">
                 <input
                     type="text"
                     name={varName}
                     value={value || ""}
+                    onChange={() => { }}
                     placeholder={placeholder}
                     ref={inputRef}
                     autoComplete="off"
