@@ -1,6 +1,12 @@
 import "./Hero.css"
 
-export default function Hero() {
+export default function Hero(props) {
+    const appendElement = (
+        <a className="no-mp" href="/cars">
+            <button className="btn btn-success">Mulai Sewa Mobil</button>
+        </a>
+    )
+
     return (
         <section id="hero" className="container-fluid bg-grey no-mp">
             <div id="hero__text" className="flex-column flex-gap-16">
@@ -10,9 +16,7 @@ export default function Hero() {
                     terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu
                     untuk sewa mobil selama 24 jam.
                 </p>
-                <a className="no-mp" href="/cars">
-                    <button className="btn btn-success">Mulai Sewa Mobil</button>
-                </a>
+                {(props.simple === true) ? "" : appendElement}
             </div>
             <img draggable="false" src="/img/img_car.png" alt="" />
         </section>
