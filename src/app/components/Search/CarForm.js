@@ -4,7 +4,7 @@ import DropdownInput from "../Form/DropdownInput"
 import "../Form/Form.css"
 import TextInput from "../Form/TextInput"
 
-export default function ({ parentHandler }) {
+export default function ({ parentHandler, overlayHandler }) {
     const [driverType, setDriverType] = useState(null)
     const [pickupDate, setPickupDate] = useState(null)
     const [pickupTime, setPickupTime] = useState(null)
@@ -39,6 +39,7 @@ export default function ({ parentHandler }) {
                     noDriver: "Tanpa Sopir (Lepas Kunci)"
                 }}
                 parentHandler={setDriverType}
+                overlayHandler={overlayHandler}
             />
 
             <DateInput
@@ -47,6 +48,7 @@ export default function ({ parentHandler }) {
                 placeholder="Pilih Tanggal"
                 parentHandler={setPickupDate}
                 value={pickupDate}
+                overlayHandler={overlayHandler}
             />
 
             <DropdownInput
@@ -62,6 +64,7 @@ export default function ({ parentHandler }) {
                     "12.00": "12.00"
                 }}
                 parentHandler={setPickupTime}
+                overlayHandler={overlayHandler}
             />
 
             <TextInput
@@ -70,6 +73,8 @@ export default function ({ parentHandler }) {
                 varName="peopleAmount"
                 icon="/img/icon_people.svg"
                 parentHandler={setPeopleAmount}
+                type="number"
+                overlayHandler={overlayHandler}
             />
 
             <button

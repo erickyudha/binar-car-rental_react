@@ -25,6 +25,11 @@
 .input-container > input:focus {
   outline: none;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 /* DROPDOWN COMPONENT */
 .select-input {
@@ -48,6 +53,7 @@
   /* opacity: 0; */
   transition: 0.1s ease-out;
   /* visibility: hidden; */
+  z-index: 6;
 }
 .select-dropdown.active {
   visibility: visible;

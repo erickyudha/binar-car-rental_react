@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
@@ -12,15 +13,17 @@ export default function Search() {
         console.log('====================================');
     }
 
+    const [overlayActive, setOverlayActive] = useState(false)
+
     return (
         <>
             <Nav type="others" />
             <Hero simple={true} />
 
-            <Overlay />
+            <Overlay zIndex={5} active={overlayActive} />
 
             <section id="search">
-                <CarForm parentHandler={handleSubmit} />
+                <CarForm parentHandler={handleSubmit} overlayHandler={setOverlayActive} />
                 <div id="search-result" className="flex-row flex-gap-24">
 
                 </div>

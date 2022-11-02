@@ -1,5 +1,14 @@
-export default function Overlay() {
+export default function Overlay(props) {
+    const {
+        zIndex,
+        active
+    } = props
+
     return (
-        <span id="form-overlay" className="overlay"></span>
+        <span
+            id="form-overlay"
+            className={`overlay ${(active) ? "active" : ""}`}
+            style={{ "z-index": zIndex }}
+        ></span>
     )
 }

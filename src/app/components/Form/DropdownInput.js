@@ -10,15 +10,17 @@ export default function DropdownInput(props) {
             key: "value",
             key2: "value2"
         },
-        parentHandler
+        parentHandler,
+        overlayHandler
     } = props
     const inputRef = useRef(null)
     const [optionVis, setOptionVis] = useState(false);
     const [selectedOption, setSelectedOption] = useState(placeholder);
     const [dropdownWidth, setDropdownWidth] = useState(200);
 
-    const showOption = () => {
-        setOptionVis(!optionVis)
+    const showOption = (vis) => {
+        overlayHandler(vis)
+        setOptionVis(vis)
     }
     const optionCLickHandler = (e) => {
         const value = e.currentTarget.children[1].innerHTML
@@ -26,7 +28,7 @@ export default function DropdownInput(props) {
 
         parentHandler(e.currentTarget.children[0].value)
         setSelectedOption((type === "time") ? value + " WIB" : value)
-        setOptionVis(false)
+        showOption(false)
     }
 
     const appendElement = []
@@ -69,11 +71,18 @@ export default function DropdownInput(props) {
     return (
         <div ref={inputRef} className="select-input">
             <label>{label}</label>
-            <button type="button" className="select-btn input-container" onClick={showOption}>
+            <button
+                type="button"
+                className="select-btn input-container"
+                onClick={e => showOption(true)}
+                onBlur={e => setTimeout(() => {
+                    showOption(false)
+                }, 100)}
+            >
                 <span>{selectedOption}</span>
                 <img src="/img/form-arrow-down.svg" alt="" height="18" width="18" className={(optionVis) ? "active" : ""} />
             </button>
             {(optionVis) ? optionList : ""}
-        </div>
+        </div >
     )
 }

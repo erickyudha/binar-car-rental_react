@@ -10,7 +10,8 @@ export default function DateInput(props) {
         label = "LABEL_TEXT",
         placeholder = "PLACEHOLDER_TEXT",
         parentHandler,
-        value = null
+        value = null,
+        overlayHandler
     } = props
 
     const inputRef = useRef(null)
@@ -61,16 +62,20 @@ export default function DateInput(props) {
 
         dateRange.on("show.daterangepicker", () => {
             dateInputBox.classList.toggle("active");
+            overlayHandler(true)
             // checkAndToggleOverlay(dateInputBox.classList.contains("active"))
         })
         dateRange.on("hide.daterangepicker", () => {
             dateInputBox.classList.remove("active");
-            // checkAndToggleOverlay(false)
+            setTimeout(() => {
+                overlayHandler(false)
+            }, 100)
         })
 
         dateRange.on('apply.daterangepicker', function (ev, picker) {
             dateRange.val(picker.startDate.format('DD-MM-YYYY'));
             parentHandler(inputRef.current.value)
+            overlayHandler(false)
         });
 
     })
