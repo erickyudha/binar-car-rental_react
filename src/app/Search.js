@@ -49,6 +49,7 @@ export default function Search() {
     const [appendElement, setAppendElement] = useState("");
 
     useEffect(() => {
+        document.title = "Search Car - BCR"
         const fetchCarData = async () => {
             const response = await fetch("https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json");
             const data = await response.json()
