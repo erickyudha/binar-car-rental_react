@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import DateInput from "../Form/DateInput"
 import DropdownInput from "../Form/DropdownInput"
 import "../Form/Form.css"
 import TextInput from "../Form/TextInput"
+import { saveDriverType, savePickupDate, savePickupTime, savePeopleAmount } from "./carFormSlice"
 
 export default function ({ parentHandler, overlayHandler }) {
-    const [driverType, setDriverType] = useState(null)
-    const [pickupDate, setPickupDate] = useState(null)
-    const [pickupTime, setPickupTime] = useState(null)
-    const [peopleAmount, setPeopleAmount] = useState(null)
+    const formValue = useSelector(state => state.carForm.value)
+    const dispatch = useDispatch()
 
     const validation = (arr) => {
         let isValid = true
@@ -19,13 +19,7 @@ export default function ({ parentHandler, overlayHandler }) {
     }
 
     const clickHandler = (e) => {
-        const value = {
-            driverType: driverType,
-            pickupDate: pickupDate,
-            pickupTime: pickupTime,
-            peopleAmount: peopleAmount
-        }
-        parentHandler(value)
+        parentHandler(formValue)
     }
 
     return (
@@ -38,7 +32,7 @@ export default function ({ parentHandler, overlayHandler }) {
                     withDriver: "Dengan Sopir",
                     noDriver: "Tanpa Sopir (Lepas Kunci)"
                 }}
-                parentHandler={setDriverType}
+                parentHandler={value => dispatch(saveDriverType(value))}
                 overlayHandler={overlayHandler}
             />
 
@@ -46,8 +40,8 @@ export default function ({ parentHandler, overlayHandler }) {
                 varName="pickupDate"
                 label="Tanggal"
                 placeholder="Pilih Tanggal"
-                parentHandler={setPickupDate}
-                value={pickupDate}
+                parentHandler={value => dispatch(savePickupDate(value))}
+                value={formValue.pickupDate}
                 overlayHandler={overlayHandler}
             />
 
@@ -63,7 +57,7 @@ export default function ({ parentHandler, overlayHandler }) {
                     "11.00": "11.00",
                     "12.00": "12.00"
                 }}
-                parentHandler={setPickupTime}
+                parentHandler={value => dispatch(savePickupTime(value))}
                 overlayHandler={overlayHandler}
             />
 
@@ -72,14 +66,14 @@ export default function ({ parentHandler, overlayHandler }) {
                 placeholder="Jumlah Penumpang"
                 varName="peopleAmount"
                 icon="/img/icon_people.svg"
-                parentHandler={setPeopleAmount}
+                parentHandler={value => dispatch(savePeopleAmount(value))}
                 type="number"
                 overlayHandler={overlayHandler}
             />
 
             <button
                 id="search-car-btn"
-                className={`btn btn-success ${(validation([driverType, pickupDate, pickupTime])) ? "" : "disabled"}`}
+                className={`btn btn-success ${(validation([formValue.driverType, formValue.pickupDate, formValue.pickupTime])) ? "" : "disabled"}`}
                 onClick={clickHandler}
             >
                 Cari Mobil
