@@ -57,8 +57,8 @@ export default function ({ parentHandler, overlayHandler }) {
                 label="Waktu Jemput"
                 placeholder="Pilih Waktu Jemput"
                 option={{
-                    "8.00": "8.00",
-                    "9.00": "9.00",
+                    "08.00": "08.00",
+                    "09.00": "09.00",
                     "10.00": "10.00",
                     "11.00": "11.00",
                     "12.00": "12.00"

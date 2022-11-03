@@ -9,6 +9,9 @@ import "./Search.css"
 
 export default function Search() {
     const handleSubmit = value => {
+        console.log('====================================');
+        console.log(value);
+        console.log('====================================');
         const filteredCars = cars.filter(car => {
             let isValid = true;
 
